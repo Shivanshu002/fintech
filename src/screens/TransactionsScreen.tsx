@@ -28,7 +28,7 @@ const TransactionsScreen = () => {
 
   const displayTxns = transactions.length > 0 ? transactions : MOCK_TXNS;
   const filtered = displayTxns.filter((t: any) =>
-    (t.name || t.category || '').toLowerCase().includes(search.toLowerCase())
+    (t.note || t.name || t.category || '').toLowerCase().includes(search.toLowerCase())
   );
 
   const handleSave = (data: any) => {
@@ -38,7 +38,6 @@ const TransactionsScreen = () => {
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.header}>
-        <Text style={styles.title}>Transactions</Text>
         <TouchableOpacity style={styles.addBtn} onPress={() => setSheetVisible(true)}>
           <Text style={styles.addBtnText}>+ Add</Text>
         </TouchableOpacity>
@@ -61,9 +60,9 @@ const TransactionsScreen = () => {
         renderItem={({ item }: any) => (
           <TransactionItem
             icon={item.icon || '💳'}
-            name={item.name || item.category}
+            name={item.note || item.name || item.category}
             category={item.category}
-            date={item.date}
+            date={item.date ? new Date(item.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : '—'}
             amount={item.amount}
             type={item.type}
           />
@@ -84,7 +83,7 @@ const styles = StyleSheet.create({
   addBtnText: { color: Colors.WHITE, fontWeight: '600', fontSize: 13 },
   searchBox: { paddingHorizontal: 16, marginBottom: 8 },
   searchInput: { backgroundColor: Colors.SURFACE, borderRadius: 10, padding: 12, fontSize: 14, color: Colors.TEXT_PRIMARY },
-  list: { paddingHorizontal: 16, paddingBottom: 20 },
+  list: { paddingHorizontal: 16, paddingBottom: 96 },
   sep: { height: 1, backgroundColor: Colors.SCREEN_BG },
 });
 

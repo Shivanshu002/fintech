@@ -41,7 +41,6 @@ const GoalsScreen = () => {
     <SafeAreaView style={styles.safe}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
-          <Text style={styles.title}>Goals</Text>
           <TouchableOpacity onPress={() => setModalVisible(true)}>
             <Text style={styles.newLink}>+ New</Text>
           </TouchableOpacity>
@@ -98,7 +97,7 @@ const styles = StyleSheet.create({
   header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 16 },
   title: { fontSize: 20, fontWeight: '700', color: Colors.TEXT_PRIMARY },
   newLink: { color: Colors.PRIMARY, fontWeight: '600', fontSize: 14 },
-  content: { paddingHorizontal: 16, paddingBottom: 20 },
+  content: { paddingHorizontal: 16, paddingBottom: 96 },
   modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.4)', justifyContent: 'center', padding: 24 },
   modalBox: { backgroundColor: Colors.WHITE, borderRadius: 16, padding: 20 },
   modalTitle: { fontSize: 16, fontWeight: '700', color: Colors.TEXT_PRIMARY, marginBottom: 16 },

@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
   tabActive: { backgroundColor: Colors.PRIMARY, borderColor: Colors.PRIMARY },
   tabText: { fontSize: 12, color: Colors.TEXT_MUTED },
   tabTextActive: { color: Colors.PRIMARY_BG, fontWeight: '600' },
-  content: { paddingHorizontal: 16, paddingBottom: 20 },
+  content: { paddingHorizontal: 16, paddingBottom: 96 },
   card: { backgroundColor: Colors.SURFACE, borderRadius: 14, padding: 14, marginBottom: 14 },
   cardTitle: { fontSize: 14, fontWeight: '700', color: Colors.TEXT_PRIMARY, marginBottom: 12 },
   catRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 10 },

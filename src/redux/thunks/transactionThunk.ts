@@ -15,7 +15,9 @@ export const getTransactions =
       const token = getState().auth.token!;
       const params = filters ? '?' + new URLSearchParams(filters).toString() : '';
       const data = await doGet(Routes.url.transactions.list + params, authHeader(token));
-      dispatch(fetchTransactionsSuccess(data));
+      // API may return array directly or wrapped
+      const list = Array.isArray(data) ? data : (data.data ?? data.transactions ?? []);
+      dispatch(fetchTransactionsSuccess(list));
     } catch {
       dispatch(fetchTransactionsFailure('Failed to fetch transactions'));
     }
@@ -39,8 +41,12 @@ export const addTransaction =
     try {
       dispatch(addTransactionStart());
       const token = getState().auth.token!;
-      const data = await doPost(Routes.url.transactions.list, payload, authHeader(token));
-      dispatch(addTransactionSuccess(data));
+      await doPost(Routes.url.transactions.list, payload, authHeader(token));
+      // Refetch full list so UI is always in sync
+      const params = '';
+      const data = await doGet(Routes.url.transactions.list + params, authHeader(token));
+      const list = Array.isArray(data) ? data : (data.data ?? data.transactions ?? []);
+      dispatch(fetchTransactionsSuccess(list));
       onSuccess?.();
     } catch {
       dispatch(addTransactionFailure('Failed to add transaction'));

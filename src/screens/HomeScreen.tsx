@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { View, Text, ScrollView, StyleSheet, SafeAreaView } from 'react-native';
+import { AvatarButton } from '../../App';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import { getTransactionSummary, getTransactions } from '../redux/thunks/transactionThunk';
@@ -31,15 +32,9 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
         <View style={styles.topBar}>
-          <View>
-            <Text style={styles.greeting}>Good morning,</Text>
-            <Text style={styles.name}>{user?.name || 'Shiv'}</Text>
-          </View>
-          <View style={styles.avatar}>
-            <Text style={styles.avatarText}>{(user?.name || 'S')[0].toUpperCase()}</Text>
-          </View>
+          <Text style={styles.greeting}>Good morning, <Text style={styles.name}>{user?.name || 'Shiv'}</Text></Text>
         </View>
 
         <BalanceCard
@@ -56,9 +51,9 @@ const HomeScreen = () => {
             <TransactionItem
               key={txn._id}
               icon={txn.icon || '💳'}
-              name={txn.name || txn.category}
+              name={txn.note || txn.name || txn.category}
               category={txn.category}
-              date={txn.date}
+              date={txn.date ? new Date(txn.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : txn.date}
               amount={txn.amount}
               type={txn.type}
             />
@@ -72,11 +67,10 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: Colors.SCREEN_BG },
   scroll: { flex: 1 },
-  topBar: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 16 },
-  greeting: { fontSize: 12, color: Colors.TEXT_MUTED },
-  name: { fontSize: 18, fontWeight: 'bold', color: Colors.TEXT_PRIMARY },
-  avatar: { width: 40, height: 40, borderRadius: 20, backgroundColor: Colors.PRIMARY_BG, alignItems: 'center', justifyContent: 'center' },
-  avatarText: { color: Colors.PRIMARY, fontWeight: '700', fontSize: 16 },
+  scrollContent: { paddingBottom: 96 },
+  topBar: { paddingHorizontal: 16, paddingVertical: 12 },
+  greeting: { fontSize: 13, color: Colors.TEXT_MUTED },
+  name: { fontSize: 16, fontWeight: 'bold', color: Colors.TEXT_PRIMARY },
   section: { backgroundColor: Colors.WHITE, borderRadius: 14, marginHorizontal: 16, marginBottom: 16, padding: 14 },
   sectionTitle: { fontSize: 14, fontWeight: '700', color: Colors.TEXT_PRIMARY, marginBottom: 8 },
 });
