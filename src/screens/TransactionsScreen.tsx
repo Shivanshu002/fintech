@@ -9,12 +9,7 @@ import { getTransactions, addTransaction } from '../redux/thunks/transactionThun
 import TransactionItem from '../components/TransactionItem';
 import BottomSheet from '../components/BottomSheet';
 import { Colors } from '../utils/colors';
-
-const MOCK_TXNS = [
-  { _id: '1', icon: '🛒', name: 'Groceries', category: 'Food', date: 'Today', amount: 850, type: 'expense' as const },
-  { _id: '2', icon: '💼', name: 'Freelance', category: 'Income', date: 'Yesterday', amount: 8000, type: 'income' as const },
-  { _id: '3', icon: '🚗', name: 'Petrol', category: 'Transport', date: 'Mon', amount: 500, type: 'expense' as const },
-];
+import { MOCK_TXNS } from '../constants/home';
 
 const TransactionsScreen = () => {
   const dispatch = useDispatch();

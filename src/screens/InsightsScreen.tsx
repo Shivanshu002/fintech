@@ -4,28 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import { getCategories, getWeekComparison } from '../redux/thunks/insightThunk';
 import { Colors } from '../utils/colors';
+import { MOCK_CATEGORIES, DAILY, CAT_BREAKDOWN } from '../constants/insights';
 
 const TABS = ['Categories', 'Week vs last', 'Monthly'];
-
-const MOCK_CATEGORIES = [
-  { name: 'Food', amount: 8600, pct: 72, color: Colors.PRIMARY_MID },
-  { name: 'Transport', amount: 4800, pct: 40, color: Colors.PRIMARY_LIGHT },
-  { name: 'Bills', amount: 3350, pct: 28, color: '#B5D4F4' },
-  { name: 'Shopping', amount: 2400, pct: 20, color: Colors.PRIMARY },
-];
-
-const DAILY = [
-  { day: 'Mon', tw: 320, lw: 280 }, { day: 'Tue', tw: 180, lw: 220 },
-  { day: 'Wed', tw: 450, lw: 390 }, { day: 'Thu', tw: 290, lw: 310 },
-  { day: 'Fri', tw: 680, lw: 510 }, { day: 'Sat', tw: 820, lw: 620 },
-  { day: 'Sun', tw: 460, lw: 470 },
-];
-
-const CAT_BREAKDOWN = [
-  { icon: '🛒', name: 'Food', diff: '+₹320 this week', diffUp: true, tw: 1240, lw: 920, twBar: 62, lwBar: 44 },
-  { icon: '🚗', name: 'Transport', diff: '+₹50 this week', diffUp: false, tw: 750, lw: 700, twBar: 36, lwBar: 34 },
-  { icon: '💡', name: 'Bills', diff: '-₹200 saved', diffUp: false, tw: 480, lw: 680, twBar: 23, lwBar: 33 },
-];
 
 const maxBar = 800;
 
@@ -45,7 +26,6 @@ const InsightsScreen = () => {
     <SafeAreaView style={styles.safe}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
-          <Text style={styles.title}>Insights</Text>
           <View style={styles.monthPill}><Text style={styles.monthText}>April 2026</Text></View>
         </View>
 

@@ -9,12 +9,7 @@ import { getGoals, addGoal } from '../redux/thunks/goalThunk';
 import GoalCard from '../components/GoalCard';
 import StreakCard from '../components/StreakCard';
 import { Colors } from '../utils/colors';
-
-const MOCK_GOALS = [
-  { _id: '1', title: 'Emergency Fund', targetAmount: 100000, savedAmount: 72000, status: 'On track' },
-  { _id: '2', title: 'New Laptop', targetAmount: 80000, savedAmount: 30400, status: 'Needs boost' },
-  { _id: '3', title: 'Goa Trip', targetAmount: 50000, savedAmount: 10000, status: 'Behind' },
-];
+import { MOCK_GOALS } from '../constants/goals';
 
 const GoalsScreen = () => {
   const dispatch = useDispatch();

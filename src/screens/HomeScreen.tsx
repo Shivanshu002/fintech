@@ -8,13 +8,7 @@ import BalanceCard from '../components/BalanceCard';
 import WeekChart from '../components/WeekChart';
 import TransactionItem from '../components/TransactionItem';
 import { Colors } from '../utils/colors';
-
-const MOCK_WEEKLY = [3200, 1800, 4500, 2900, 6800, 8200, 4600];
-const MOCK_TXNS = [
-  { _id: '1', icon: '🛒', name: 'Groceries', category: 'Food', date: 'Today', amount: 850, type: 'expense' as const },
-  { _id: '2', icon: '💼', name: 'Freelance', category: 'Income', date: 'Yesterday', amount: 8000, type: 'income' as const },
-  { _id: '3', icon: '🚗', name: 'Petrol', category: 'Transport', date: 'Mon', amount: 500, type: 'expense' as const },
-];
+import { MOCK_WEEKLY, MOCK_TXNS } from '../constants/home';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
