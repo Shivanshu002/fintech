@@ -11,6 +11,7 @@ A React Native app to track expenses, manage savings goals, and visualize spendi
 - **React Navigation** — Screen navigation
 - **AsyncStorage** — Persist auth token locally
 - **REST API** — Backend at `fintech-backend-427x.onrender.com`
+- **Swegger Docs**= `https://fintech-backend-427x.onrender.com/api/docs`
 
 ---
 
